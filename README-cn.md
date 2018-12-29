@@ -22,8 +22,9 @@
 
 public class SqlLite {
 	
-	@Table("user") // Set table name (by default table name class name)
-	@BootStrapID("defaultBootstrap")	// Identifies the bootstrap id
+	@Table("user") 
+	
+	@BootStrapID("defaultBootstrap")	
 	public static class User implements BasicBean{
 		
 		@NoInsert
@@ -52,9 +53,9 @@ public class SqlLite {
 				
 		bootstrap.query(user).create();	//create table
 		bootstrap.query(user).insert(); // insert entity
-		user = bootstrap.query(User.class,1).find(); // find by pk(id)
+		user = bootstrap.query(User.class,1).find(); 
 		System.out.println("The user where id=1 ? === 	"+user+"	==="); 
-		bootstrap.query(User.class, 1).delete();	// delete by pk(id)
+		bootstrap.query(User.class, 1).delete();	
 	}
 
 }
