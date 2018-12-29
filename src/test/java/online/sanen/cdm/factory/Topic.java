@@ -1,6 +1,8 @@
-package online.sanen.cdm;
+package online.sanen.cdm.factory;
 
 import com.mhdt.annotation.Priority;
+
+import online.sanen.cdm.Behavior;
 
 
 @Priority

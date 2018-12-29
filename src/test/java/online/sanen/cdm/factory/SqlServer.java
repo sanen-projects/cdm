@@ -1,7 +1,8 @@
-package online.sanen.cdm;
+package online.sanen.cdm.factory;
 
 import com.mhdt.Print;
 
+import online.sanen.cdm.Bootstrap;
 import online.sanen.cdm.factory.BootstrapFactoty;
 
 public class SqlServer {

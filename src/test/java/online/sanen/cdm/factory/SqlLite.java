@@ -1,4 +1,4 @@
-package online.sanen.cdm;
+package online.sanen.cdm.factory;
 
 import java.util.List;
 
@@ -6,6 +6,8 @@ import com.mhdt.annotation.BootStrapID;
 import com.mhdt.annotation.NoInsert;
 import com.mhdt.annotation.Table;
 
+import online.sanen.cdm.Behavior;
+import online.sanen.cdm.Bootstrap;
 import online.sanen.cdm.basic.BasicBean;
 import online.sanen.cdm.basic.Driven;
 import online.sanen.cdm.basic.Sorts;
