@@ -72,7 +72,7 @@
 # 疑问
 
 #### 使用过程有疑惑？发现bug？改进建议？（例如：不支持我在使用的数据库）
-请[提交Issues](https://github.com/sanen-projects/cdm-core)提交问题/建议 [ISSUES](https://github.com/sanen-projects/cdm-core/issues),将在24小时内作出回应
+请提交 [ISSUES](https://github.com/sanen-projects/cdm-core/issues)或邮件282854237@qq.com,将在24小时内作出回应
 
 # BootstrapFactory
 
