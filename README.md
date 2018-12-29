@@ -144,21 +144,8 @@ class User implements BasicBean{
 		 
 }
 ```
-	 
-2. Create an instance of **BootStrap** using **BootStrapFactoty**
-```java
-
-	//url & username & password modify according to your current environment
-	Bootstrap bootstrap = BootStrapFactoty.load( obstract -> {
-		obstract.setDriver(Driven.MYSQL);
-		obstract.setUrl("jdbc:mysql://127.0.0.1:3306/test?useSSL=false");
-		obstract.setUsername("root");
-		obstract.setPassword("root");
-		obstract.setFormat(true);
-	});
-```
 		
- 3. **CRUD** operations
+ 2. **CRUD** operations
 ```java
 
 		bootstrap.query(user).insert();
@@ -208,22 +195,9 @@ class User implements BasicBean{
 	}
 ```
 
-2. Create an instance of **BootStrap** using **BootStrapFactoty**
-	
-```java
 
-	//url & username & password modify according to your current environment
-	Bootstrap bootstrap = BootStrapFactoty.load( obstract -> {
-		obstract.setDriver(Driven.MYSQL);
-		obstract.setUrl("jdbc:mysql://127.0.0.1:3306/test?useSSL=false");
-		obstract.setUsername("root");
-		obstract.setPassword("root");
-		obstract.setFormat(true);
-	});
-	
-```
 
-3. CRUD operations
+2. **CRUD** operations
 
 ```java
 
