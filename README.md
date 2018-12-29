@@ -87,7 +87,7 @@ Support common database *Mysql*,*Sqlite*,*Oracle*,*SqlServer*
 
 #  Installation
 
-Import <a href="https://mvnrepository.com/artifact/online.sanen/cdm-core">maven依赖</a>
+Import <a href="https://mvnrepository.com/artifact/online.sanen/cdm-core">Maven rely on</a>
 
 ### Maven
 ```xml
