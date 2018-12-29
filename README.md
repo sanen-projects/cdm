@@ -7,7 +7,7 @@
 
 [![Maven central](https://img.shields.io/badge/maven%20central-2.0.5-brightgreen.svg)](https://search.maven.org/artifact/online.sanen/cdm-core/2.0.5/jar) [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
-
+English | [简体中文](.README-cn.md)
 
 A simple to use, zero configuration, high fault rate, the efficiency of the Java ™ ORM database framework
 
