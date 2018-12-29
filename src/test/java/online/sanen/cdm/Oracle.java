@@ -10,13 +10,13 @@ public class Oracle {
 
 		try {
 
-			Bootstrap bootstrap = BootstrapFactoty.load("123", obstract -> {
+			Bootstrap bootstrap = BootstrapFactoty.load("oracle", obstract -> {
 
 				obstract.setDataSouseType(DataSouseType.Dbcp);
 				obstract.setDriver(Driven.ORACLE);
 				obstract.setUrl("jdbc:oracle:thin:@//127.0.0.1:1521/orcl");
-				obstract.setUsername("bi");
-				obstract.setPassword("123");
+				obstract.setUsername("username");
+				obstract.setPassword("password");
 				obstract.setLog(true);
 			});
 			

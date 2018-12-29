@@ -9,7 +9,7 @@
 	<description>Java™ ORM framework</description>
 	<url>https://gitee.com/282854237/cdm-core</url>
 	<packaging>jar</packaging>
-	<version>2.0.6</version>
+	<version>2.0.5</version>
 
 	<distributionManagement>
 		<snapshotRepository>

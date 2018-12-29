@@ -9,11 +9,11 @@ public class Mysql {
 
 	public static void main(String[] args) throws Exception {
 
-		BootstrapFactoty.load("sys", obstract -> {
+		Bootstrap bootstrap = BootstrapFactoty.load("sys", obstract -> {
 			obstract.setDriver(Driven.MYSQL);
-			obstract.setUrl("jdbc:mysql://122.14.215.129:3306/test?useSSL=false");
-			obstract.setUsername("zs");
-			obstract.setPassword("123456");
+			obstract.setUrl("jdbc:mysql://127.0.0.1:3306/test?useSSL=false");
+			obstract.setUsername("root");
+			obstract.setPassword("root");
 			obstract.setFormat(true);
 		});
 
