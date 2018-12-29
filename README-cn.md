@@ -9,13 +9,13 @@
 
 
 
-一个使用简单，零配置，容错率高，效率的Java™ ORM 数据库框架
+A simple to use, zero configuration, high fault rate, the efficiency of the Java ™ ORM database framework
 
-### ✨ 特性
-* **使用简单**  没有第三方依赖，一行代码即可初始化数据库连接，调用接口只需要记住一个引导器（Bootstrap），一个工厂(BootstrapFactory),）两个接口（BasicBean，Behavior<T>）即可。
-* **零配置** 设计原则遵循习惯大于约定,如有配置必要,使用注解替代XML,JSON等配置文件
-* **容错率高** 非致命错误，自动采取默认方案替代
-* **效率** 节省时间，虽然支持编写sql但大部分情况没有这样做的必要
+### ✨ Features
+* **Easy**  Without relying on any third party, one line of code can initialize the database connection. To call the interface, you only need to remember one Bootstrap, one BootstrapFactory and two interfaces (BasicBean, Behavior<T>).
+* **Zero configuration** Design principles follow conventions rather than conventions. If necessary, use annotations instead of XML,JSON and other configuration files
+* **High fault tolerance rate** Non-fatal error automatically takes the default option instead
+* **Efficiency** Save time and while SQL writing is supported, most of the time it is not necessary
 
 
 ```java
@@ -62,34 +62,32 @@ public class SqlLite {
 ```
 
 
-支持常用数据库 *Mysql*,*Sqlite*,*Oracle*,*SqlServer*,更改Driven，url即可
+Support common database *Mysql*,*Sqlite*,*Oracle*,*SqlServer*
 
-
-#  与Mybatis比较
-* 与Mybatis相比，无配置文件，少数需要配置的参数通过注解加以实现
-* 小巧，使用简单，只需看看示例你就能够学会使用
-* 大部分情况下通过组合函数来替代sql（支持复杂条件查询，limit,排序等），数据库移植性好
-
-
-
-
-#  与Hibernate比较
-* 不会因为配置复杂带来众多bug
-* 支持批量修改，删除
-* 内置缓存让执行效率更高
-* 虽然是orm框架，但还是建议复杂问题sql解决，类似Hibernate的一对多关系相较于sql，会把问题变的复杂和难以维护
+#  Compared with Mybatis
+* In contrast to Mybatis, there is no configuration file and a few parameters that need to be configured are implemented by annotations
+* Small, easy to use, just look at the examples you can learn to use
+* In most cases, combining functions to replace SQL (support complex conditional queries, limit, sort, etc.) is good for database portability
 
 
 
 
+#  Compared with Hibernate
+* It won't introduce many bugs due to complicated configuration
+* Support batch modification and deletion
+* Built-in caching makes execution more efficient
+* Although it is an orm framework, SQL is still recommended to solve complex problems. Compared with SQL, a one-to-many relationship similar to Hibernate will make the problem more complex and difficult to maintain
 
-#  文档
+
+
+
+#  Document
 
 [Please refer to the Wiki for continuous updates](https://github.com/sanen-projects/cdm-core/wiki)
 
-#  安装
+#  Installation
 
-导入<a href="https://mvnrepository.com/artifact/online.sanen/cdm-core">maven依赖</a>
+Import <a href="https://mvnrepository.com/artifact/online.sanen/cdm-core">maven依赖</a>
 
 ### Maven
 ```xml
@@ -112,25 +110,25 @@ public class SqlLite {
 
 
 
-# 下载
+# Download
 
 
 
 [![Maven cdm-api](https://img.shields.io/badge/Maven-cdm--api-ff69b4.svg)](http://repo1.maven.org/maven2/online/sanen/cdm-api/) [![Maven cdm-core](https://img.shields.io/badge/Maven-cdm--core-ff69b4.svg)](http://repo1.maven.org/maven2/online/sanen/cdm-core/)  [![Maven mhdt-common](https://img.shields.io/badge/Maven-mhdt--common-ff69b4.svg)](http://repo1.maven.org/maven2/online/sanen/mhdt-common/)
 
-#  接口
+#  Interface
 
 ## BasicBean.java
- 实体类须实现的基础接口，实现后就可以通过bootstrap调用,例如:
+ The basic interface that the entity class must implement can be called through bootstrap. For example:
 
 > bootstrap.query(User.class)
 > bootstrap.query("user").addEntry(User.class)
 
 
 	
- **示例**
+ **The sample**
 
-1. 实体类实现 **BasicBean**  接口
+1. The entity class implements the **BasicBean** interface
 
 ```java
 
@@ -147,7 +145,7 @@ class User implements BasicBean{
 }
 ```
 	 
-2. 使用 **BootStrapFactoty** 创建 **BootStrap** 实例
+2. Create an instance of **BootStrap** using **BootStrapFactoty**
 ```java
 
 	//url & username & password modify according to your current environment
@@ -160,30 +158,31 @@ class User implements BasicBean{
 	});
 ```
 		
- 3. **CRUD** 操作
+ 3. **CRUD** operations
 ```java
 
 		bootstrap.query(user).insert();
 		bootstrap.query(user).delete();
 		bootstrap.query(user).update();
 		
-		//主键/列表查询
+		//Primary key/list query
 		bootstrap.query(User.class,2).find();
 		bootstrap.query(User.class).addEntry(User.class).list();
 		
-		//条件查询
-		Condition condition = C.buid("name").eq("zhang san"); 	// 创建条件
+		//Conditions of the query
+		Condition condition = C.buid("name").eq("zhang san"); 	
+	// Create conditions
 		bootstrap.query("user").addEntry(User.class).addCondition(condition).sort(Sorts.DESC, "id").limit(0,10).list();
 		
 ```	
 
 ## Behavior.java
 
- 充血模式（DDD），实体类实现后自身即可具备CRUD行为
+ Hyperemia mode (DDD), the entity class implementation itself can have CRUD behavior
 
- **示例**：
+ **The sample**：
 
-1. 实体类实现 **Behavior**  接口
+1. The entity class implements the **Behavior** interface
 	
 ```java
 
@@ -207,7 +206,7 @@ class User implements BasicBean{
 	}
 ```
 
-2. 使用 **BootStrapFactoty** 创建 **BootStrap** 实例
+	2. Create an instance of **BootStrap** using **BootStrapFactoty**
 ```java
 
 	//url & username & password modify according to your current environment
@@ -221,7 +220,7 @@ class User implements BasicBean{
 	
 ```
 
-3. CRUD操作
+3. CRUD operations
 
 ```java
 
@@ -245,7 +244,7 @@ class User implements BasicBean{
 		user.delete();
 
 ```
-🌙  可前往[Github cdm-core](https://github.com/sanen-projects/cdm-core)提交问题/建议 [ISSUES](https://github.com/sanen-projects/cdm-core/issues)
+🌙  Can go to[Github cdm-core](https://github.com/sanen-projects/cdm-core) submit questions/Suggestions [ISSUES](https://github.com/sanen-projects/cdm-core/issues)
 
 
 
