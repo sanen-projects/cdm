@@ -145,7 +145,7 @@ class User implements BasicBean{
 }
 ```
 	 
-2. Create an instance of **BootStrap** using **BootStrapFactoty**
+2. Create an instance of BootStrap using **BootStrapFactoty**
 ```java
 
 	//url & username & password modify according to your current environment
