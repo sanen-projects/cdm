@@ -23,7 +23,6 @@
 public class SqlLite {
 	
 	@Table("user") 
-	
 	@BootStrapID("defaultBootstrap")	
 	public static class User implements BasicBean{
 		
