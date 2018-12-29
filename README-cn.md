@@ -12,7 +12,7 @@
 一个使用简单，零配置，容错率高，效率的Java™ ORM 数据库框架
 
 ### ✨ 特性
-* **使用简单**  没有第三方依赖，一行代码即可初始化数据库连接，调用接口只需要记住一个引导器（Bootstrap），工厂[BootstrapFactory](#bootstrapFactory),两个接口（[BasicBean](#basicbeanjava)，[Behavior<T>](#behaviorjava)）即可。
+* **使用简单**  没有第三方依赖，一行代码即可初始化数据库连接，调用接口只需要记住一个引导器（Bootstrap），工厂[BootstrapFactory](#bootstrapFactory),两个接口（[BasicBean](#basicbean)，[Behavior<T>](#behavior)）即可。
 	
 * **零配置** 设计原则遵循习惯大于约定,如有配置必要,使用注解替代XML,JSON等配置文件
 * **容错率高** 非致命错误，自动采取默认方案替代
@@ -120,7 +120,7 @@ Bootstrap bootstrap = BootstrapFactoty.load(obstract -> {
 });
 ```
 
-# BasicBean.java
+# BasicBean
  实体类须实现的基础接口，实现后就可以通过bootstrap调用,例如:
 
 > bootstrap.query(User.class)
@@ -179,7 +179,7 @@ class User implements BasicBean{
 
 
 
-# Behavior.java
+# Behavior
 
  充血模式（DDD），实体类实现后自身即可具备CRUD行为
 
