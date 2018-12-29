@@ -64,7 +64,7 @@ public class SqlLite {
 
 Support common database *Mysql*,*Sqlite*,*Oracle*,*SqlServer*
 
-#  Compared with Mybatis
+# Compare with Mybatis
 * In contrast to Mybatis, there is no configuration file and a few parameters that need to be configured are implemented by annotations
 * Small, easy to use, just look at the examples you can learn to use
 * In most cases, combining functions to replace SQL (support complex conditional queries, limit, sort, etc.) is good for database portability
@@ -72,7 +72,7 @@ Support common database *Mysql*,*Sqlite*,*Oracle*,*SqlServer*
 
 
 
-#  Compared with Hibernate
+# Compare with Hibernate
 * It won't introduce many bugs due to complicated configuration
 * Support batch modification and deletion
 * Built-in caching makes execution more efficient
@@ -92,11 +92,11 @@ Import <a href="https://mvnrepository.com/artifact/online.sanen/cdm-core">Maven 
 ### Maven
 ```xml
 	
-	<dependency>
-		<groupId>online.sanen</groupId>
-		<artifactId>cdm-core</artifactId>
-		<version>2.0.5</version>
-	</dependency>
+<dependency>
+	<groupId>online.sanen</groupId>
+	<artifactId>cdm-core</artifactId>
+	<version>2.0.5</version>
+</dependency>
 	
 ```
 
@@ -104,7 +104,7 @@ Import <a href="https://mvnrepository.com/artifact/online.sanen/cdm-core">Maven 
 
 ```js
 	
-	compile group: 'online.sanen', name: 'cdm-core', version: '2.0.5'
+compile group: 'online.sanen', name: 'cdm-core', version: '2.0.5'
 	
 ```
 
@@ -120,12 +120,12 @@ Import <a href="https://mvnrepository.com/artifact/online.sanen/cdm-core">Maven 
 
 ```java
 Bootstrap bootstrap = BootstrapFactoty.load("sqlite", obstract -> {
-			obstract.setDriver(Driven.MYSQL);
-			obstract.setUrl("jdbc:mysql://127.0.0.1:3306/test?useSSL=false");
-			obstract.setUsername("root");
-			obstract.setPassword("root");
-			obstract.setFormat(true);
-		});
+	obstract.setDriver(Driven.MYSQL);
+	obstract.setUrl("jdbc:mysql://127.0.0.1:3306/test?useSSL=false");
+	obstract.setUsername("root");
+	obstract.setPassword("root");
+	obstract.setFormat(true);
+});
 ```
 
 ## Oracle
@@ -133,32 +133,31 @@ Bootstrap bootstrap = BootstrapFactoty.load("sqlite", obstract -> {
 ```java
 Bootstrap bootstrap = BootstrapFactoty.load("oracle", obstract -> {
 
-				obstract.setDataSouseType(DataSouseType.Dbcp);
-				obstract.setDriver(Driven.ORACLE);
-				obstract.setUrl("jdbc:oracle:thin:@//127.0.0.1:1521/orcl");
-				obstract.setUsername("username");
-				obstract.setPassword("password");
-			});
+	obstract.setDataSouseType(DataSouseType.Dbcp);
+	obstract.setDriver(Driven.ORACLE);
+	obstract.setUrl("jdbc:oracle:thin:@//127.0.0.1:1521/orcl");
+	obstract.setUsername("username");
+	obstract.setPassword("password");
+});
 ```
 
 ## Sqlite
 
 ```java
 Bootstrap bootstrap = BootstrapFactoty.load("defaultBootstrap",obstract -> {
-			obstract.setDriver(Driven.SQLITE);
-			obstract.setUrl("jdbc:sqlite:test.sqlite");
-		});
+	obstract.setDriver(Driven.SQLITE);
+	obstract.setUrl("jdbc:sqlite:test.sqlite");
+});
 ```
 
 ## Sqlserver
 ```java
 Bootstrap bootstrap = BootstrapFactoty.load(obstract -> {
-
-				obstract.setDriver("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-				obstract.setUrl("jdbc:sqlserver://127.0.0.1:1433;DatabaseName=testDb");
-				obstract.setUsername("username");
-				obstract.setPassword("password");
-			});
+	obstract.setDriver("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+	obstract.setUrl("jdbc:sqlserver://127.0.0.1:1433;DatabaseName=testDb");
+	obstract.setUsername("username");
+	obstract.setPassword("password");
+});
 ```
 
 
@@ -197,20 +196,20 @@ class User implements BasicBean{
  2. **CRUD** operations
 ```java
 
-		bootstrap.query(user).insert();
-		bootstrap.query(user).delete();
-		bootstrap.query(user).update();
+bootstrap.query(user).insert();
+bootstrap.query(user).delete();
+bootstrap.query(user).update();
 		
-		//Primary key/list query
-		bootstrap.query(User.class,2).find();
-		bootstrap.query(User.class).addEntry(User.class).list();
+//Primary key/list query
+bootstrap.query(User.class,2).find();
+bootstrap.query(User.class).addEntry(User.class).list();
 		
-		//Conditions of the query
-		Condition condition = C.buid("name").eq("zhang san"); 	
-		// Create conditions
-		bootstrap.query("user").addEntry(User.class)
-			.addCondition(condition).sort(Sorts.DESC, "id")
-			.limit(0,10).list();
+//Conditions of the query
+Condition condition = C.buid("name").eq("zhang san"); 	
+// Create conditions
+bootstrap.query("user").addEntry(User.class)
+	.addCondition(condition).sort(Sorts.DESC, "id")
+	.limit(0,10).list();
 		
 ```	
 
@@ -224,24 +223,24 @@ class User implements BasicBean{
 	
 ```java
 
-	@Table("user") // Set the table name to the class name by default
-	@BootStrapID("defaultBootstrap")	// Identifies the bootstrap id
-	public static class User implements Behavior<User>{
+@Table("user") // Set the table name to the class name by default
+@BootStrapID("defaultBootstrap")	// Identifies the bootstrap id
+public static class User implements Behavior<User>{
 		
-		@NoInsert
-		int id;
-		String name;
+	@NoInsert
+	int id;
+	String name;
 		
-		@Override
-		public String toString() {
-			return "User [id=" + id + ", name=" + name + "]";
-		}
-
-		@Override
-		public String primarykey() {
-			return "id";
-		}
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + "]";
 	}
+
+	@Override
+	public String primarykey() {
+		return "id";
+	}
+}
 ```
 
 
@@ -250,24 +249,24 @@ class User implements BasicBean{
 
 ```java
 
-		User user = new User();
-		user.name = "zhangsan";
-		user.createTable();
+User user = new User();
+user.name = "zhangsan";
+user.createTable();
 						
-		int id = user.insert();
+int id = user.insert();
 				
-		List<User> list = Behavior.specify(User.class).list();
-		System.out.println(list);
+List<User> list = Behavior.specify(User.class).list();
+System.out.println(list);
 				
-		user = new User(id).findByPk().get();
-		user.name = "Li si";
-		user.update();
+user = new User(id).findByPk().get();
+user.name = "Li si";
+user.update();
 				
-		Condition condition = C.buid("name").eq("Li si");
-		list = Behavior.specify(User.class).addCondition(condition).limit(0,10).list();
-		System.out.println(list);
+Condition condition = C.buid("name").eq("Li si");
+list = Behavior.specify(User.class).addCondition(condition).limit(0,10).list();
+System.out.println(list);
 				
-		user.delete();
+user.delete();
 
 ```
 🌙  Can go to[Github cdm-core](https://github.com/sanen-projects/cdm-core) submit questions/Suggestions [ISSUES](https://github.com/sanen-projects/cdm-core/issues)
