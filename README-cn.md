@@ -51,8 +51,8 @@ public class SqlLite {
 		});
 		
 				
-		bootstrap.query(user).create();	//create table
-		bootstrap.query(user).insert(); // insert entity
+		bootstrap.query(user).create();	
+		bootstrap.query(user).insert(); 
 		user = bootstrap.query(User.class,1).find(); 
 		System.out.println("The user where id=1 ? === 	"+user+"	==="); 
 		bootstrap.query(User.class, 1).delete();	
