@@ -72,10 +72,24 @@ compile group: 'online.sanen', name: 'cdm-core', version: '2.0.5'
 # FAQ
 
 #### cdm支持Java版本？
-目前是用jdk8编译，如有需要可联系我降低jdk版本
+目前是用jdk8编译，如有需要可以联系我降低jdk版本
+
+#### 使用时候需要自行导入数据库驱动？
+和你在其它环境下使用jdbc一样，驱动是必要的，根据自己的需要下载对应版本
 
 #### 使用过程中有疑问或改进建议？
 请提交 [Issue](https://github.com/sanen-projects/cdm-core/issues)或直接邮件 282854237@qq.com,将会在24小时内作出答复
+
+
+
+
+
+
+
+
+
+
+
 
 # BootstrapFactory
 
