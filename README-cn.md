@@ -37,14 +37,7 @@
 * 虽然是orm框架，但还是建议复杂问题sql解决，类似Hibernate的一对多关系相较于sql，会把问题变的复杂和难以维护
 
 
-
-
-
-# 文档
-
-[Please refer to the Wiki for continuous updates](https://github.com/sanen-projects/cdm-core/wiki)
-
-# 安装
+# 使用
 
 导入<a href="https://mvnrepository.com/artifact/online.sanen/cdm-core">maven依赖</a>
 
@@ -67,13 +60,19 @@
 	
 ```
 
-
-
 # 下载
 
 
-
 [![Maven cdm-api](https://img.shields.io/badge/Maven-cdm--api-ff69b4.svg)](http://repo1.maven.org/maven2/online/sanen/cdm-api/) [![Maven cdm-core](https://img.shields.io/badge/Maven-cdm--core-ff69b4.svg)](http://repo1.maven.org/maven2/online/sanen/cdm-core/)  [![Maven mhdt-common](https://img.shields.io/badge/Maven-mhdt--common-ff69b4.svg)](http://repo1.maven.org/maven2/online/sanen/mhdt-common/)
+
+# 文档
+
+[Please refer to the Wiki for continuous updates](https://github.com/sanen-projects/cdm-core/wiki)
+
+# 疑问
+
+#### 使用过程有疑惑？发现bug？改进建议？（例如：不支持我在使用的数据库）
+请[提交Issues](https://github.com/sanen-projects/cdm-core)提交问题/建议 [ISSUES](https://github.com/sanen-projects/cdm-core/issues),将在24小时内作出回应
 
 # BootstrapFactory
 
@@ -248,7 +247,7 @@ class User implements BasicBean{
 		user.delete();
 
 ```
-🌙  可前往[Github cdm-core](https://github.com/sanen-projects/cdm-core)提交问题/建议 [ISSUES](https://github.com/sanen-projects/cdm-core/issues)
+
 
 
 
