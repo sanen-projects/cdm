@@ -1,0 +1,316 @@
+# CDM介绍
+CDM全名为 Common database manager，是一个对象关系映射框架；它对Spring JDBCTemplate进行了非常轻量级的对象封装，遵循“习惯大于约定”的极简设计原则，将POJO与数据库表建立映射关系，是一个全自动的 orm 框架。cdm可以自动生成SQL语句，自动执行，使得Java程序员可以随心所欲的使用对象编程思维来操纵数据库。cdm可以应用在任何使用JDBC的场合，既可以在Java的客户端程序使用，也可以在Servlet/JSP的Web应用中使用，目前最新版本为2.x。
+
+
+
+
+
+
+## 常规
+* 支持常用数据库类型Mysql、Oracle、SqlServer、Sqlite
+* 基于spring	 JDBCTemplate的事务封装
+* 在桌面编写和测试应用默认缓存策略为关闭，可通过配置参数开启
+* 对Spring项目支持友好，提供默认service、dao层实现（需要添加cdm-spring-x版本.jar）
+* 提供大量注解简化开发
+
+## 初始化
+创建程序的入口*Boostrap*实例，主要有如下3种方式
+
+
+### 工厂创建
+
+最简单的创建方式，多用于JavaSE和测试环境
+
+```
+Bootstrap bootstrap = BootStraps.create(obstract -> {
+
+			//设置驱动
+			obstract.setDriver("com.mysql.jdbc.Driver");
+			
+			//设置数据库url
+			obstract.setUrl("jdbc:mysql://112.74.203.20:3306/grid_ddk");
+			
+			//设置用户名密码
+			obstract.setUsername("biuser");
+			obstract.setPassword("test123");
+			
+			//是否开启缓存,默认false
+			obstract.setCache(false);
+			
+			//设置连接池类型，工厂方式只提供几种常见连接池实现
+			obstract.setType(DataSouseType.Druid);
+
+			return obstract;
+		});
+```
+### 构造实例
+
+```
+	   /**
+		 * 参数说明
+		 * 	jdbctemplate ： Spring JDBCTemplate实例
+		 * 	isShowSql ：是否打印sql
+		 * 	isCache ： 是否开启缓存
+		 * 	isLog ： 是否开启日志
+		 */
+		Bootstrap bootstrap  = new BootstrapDevice(jdbctemplate, isShowSql, isCache, isLog);
+
+```
+
+### Spring IOC
+```
+<!-- 创建连接池实例 -->
+<bean id="dataSource"
+		class="com.alibaba.druid.pool.DruidDataSource">
+		<property name="driverClassName" value="${jdbc.driverclass}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="filters" value="stat" />
+		<property name="maxActive" value="20" />
+		<property name="initialSize" value="5" />
+	</bean>
+
+<!-- 创建springJDBC实例 -->
+	<bean id="jdbcTemplate"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+<!-- 创建bootstrap实例 -->
+	<bean id="bootstrap" class="online.sanen.cdm.BootstrapDevice">
+		<constructor-arg ref="jdbcTemplate" />
+		<property name="isShowSql" value="false" />
+		<property name="isSqlFormat" value="true" />
+		<property name="isCache" value="false" />
+	</bean>
+```
+
+## 声明
+
+* 这篇文档尽量以“增删改查”的方式来协助你学习和使用cdm。因此，对于细节问题的拷问本文不过多涉及。
+* 示例代码中的参数在此申明，为保持演示代码简洁，后不赘述。
+
+
+```
+public class Hero implements BasicBean{
+	int id;
+	String name;
+	String wuqi;
+	
+	get,set{...}
+	
+	@Override
+	public String getPrimarykey() {
+		return "id";
+	}
+}
+
+	Hero hero = new Hero();
+	hero.setName("盖伦");
+	hero.setWuqi("多兰之刃");
+	...
+
+	List<Hero> heros = new ArrayList<>();
+	heros.add(hero);
+	...
+	
+```
+
+
+## 操作说明
+### Insert 
+
+插入对象(单条记录)
+```
+	int auto_result = bootstrap.query(hero).insert();
+	
+```
+==注意==: auto_result为接收Auto increment值，如果表里没有相应字段，将返回1代表插入成功。	
+
+批量插入(多条记录)
+```
+	bootstrap.query(heros).insert();
+```
+
+
+
+### Remove 
+
+以对象方式删除
+```
+	bootstrap.query(user).remove();
+```
+==注意==：该示例为主键操作，请在最终提交前保证这个对象的主键是有值的，就是常说的先查询后修改。
+
+
+
+
+主键删除
+```
+	//删除主键为5的数据
+	int result = bootstrap.query(Hero.class, 5).remove();
+```
+条件删除
+```
+	//从hero表中删除level(字段)大于10的数据
+	int result = bootstrap.query("Hero")
+		.addCondition("leval", Conditions.LT,10)
+		.remove();
+```
+提示: 表名不区分大小写
+
+
+### Update 
+
+修改对象
+```
+	bootstrap.query(user).update();
+```
+
+批量修改
+```
+	bootstrap.query(users).update();
+```
+
+==注意==：
+
+
+*  修改为主键操作，请在最终提交（如：bootstrap.query(user).update()）之前保证这个对象的主键是有值的，就是常说的先查询后修改。
+
+* 该操作会以实体类名作为表名，如不一致可以在实体类添加@TableName("yourTableName")注解
+
+### Select 
+
+主键查询
+```
+	//查询主键为5的数据
+	User user = bootstrap.query(Hero.class, 5).find();
+```
+
+
+查询所有
+```
+	List<Map<String,Object>> heros = bootstrap.query("Hero").list();
+	
+	List<Hero> heros = bootstrap.query("Hero")
+		.addEntry(Hero.class)
+		.list();
+```
+	
+
+条件筛选
+```
+//查询性别为女
+List<Hero> heros =bootstrap.query("Hero")
+		.addCondition("sex",Conditions.EQUALS, "女")
+		.addEntry(Hero.class)
+		.list();	
+				
+//id查询
+Map<String,Object> hero = bootstrap.query("Hero")
+		.addCondition("id", Conditions.EQUALS, 5)
+		.uniqueResult();
+
+
+Hero hero = bootstrap.query("Hero")
+		.addCondition("id", Conditions.EQUALS, 5)
+		.addEntry(Hero.class)
+		.uniqueResult();
+		
+```
+		
+		
+Limit
+```
+	List<Hero> heros = bootstrap.query("Hero")
+			.addEntry(Hero.class)
+			.limit(0,10);
+```
+
+排序
+```
+	List<Hero> heros =  bootstrap.query("Hero")
+		.addEntry(Hero.class)
+		.sort(Sorts.DESC, "胸围")
+		.list();
+```
+
+
+
+### SQL操作
+
+终于在最后看到了你最喜欢和擅长的SQL？
+
+不要高兴的太早，在这里我们并不建议你经常这么做，原因有很多，cdm更加提倡用面向对象的方式解决问题，相信这也是你正在看这份文档的原因，如果你喜欢用写sql的方式对单表增删改查，选择有很多，甚至可以不用框架来反复品味那份原汁原味。
+
+在设计之初，我们希望接口更加简单，对于复杂情况(多表关联和嵌套查询等等)没有像我们的老朋友 *Hibernate* 学习，我们不希望把事情搞砸...（同时向他致敬，他是接触到的第一个orm方案，从中借鉴很多）。于是在多表操作上你大可以肆意发挥你那积攒多年，鬼神莫测的sql功底，这样的方式更加明朗和灵活。
+
+
+
+**方法**：bootstrap.createSQL(sql, paramers)
+
+**参数**：	
+
+*sql* - 你最喜欢的SQL 
+*paramers* -  输入参数，替代sql中的 <*?*>
+		
+*实例*：
+```  
+	String sql = "select * from hero";
+	List<Hero> heros = bootstrap.createSQL(sql).addEntry(Hero.class),list();
+
+	String sql = "select * from hero where id=?";
+	Hero hero = bootstrap.createSQL(sql, 1).addEntry(Hero.class),unqueResult();
+	
+	String sql = "select name from hero where id=5";
+	String name = bootstrap.createSql(sql).uniqueResult();
+	
+```	
+
+
+## 常用方法说明
+
+**limit(Integer...args)**
+
+在mysql下使用limit(0,10) 等同于 limit 0,10<br>
+在SqlServer下limit(10) 等同于 top 10
+
+
+
+**setFields(String...fields)**
+
+来指定字段，或者来排除一些字段后再进行操作
+```
+//查询name字段
+List<Hero> hero = bootstrap.query("Hero")
+		.addEntry(Hero.class)
+		.setField("name")
+		.list();
+```
+
+**setExceptFields(String...fields)** 排除字段
+
+```
+//查询除name以外的字段
+List<Hero> hero = bootstrap.query("Hero")
+		.addEntry(Hero.class)
+		.setExceptFields("name")
+		.list();
+```
+## 返回值说明
+内部在实现时为了使用方便会根据查询方式来自动封装返回值，这可能会导致用户不明确要用什么类型来接收返回值？
+
+下面给出常用查询表格作为参考，实际情况以此推断，或直接在控制台打印返回值类型
+
+查询方式 |list | limit | uniqueResult
+------- |------- | -------| -------
+默认 |List&lt;Map&lt;String,Object>> | List&lt;Map&lt;String,Object>>| Map&lt;String,Object>
+addEntry |entrys | entrys| entry
+setField（String） |List&lt;String> | List&lt;String> | String
+setField（Interger）|List&lt;Interger> | List&lt;Interger> | String
+
+
+
+
+

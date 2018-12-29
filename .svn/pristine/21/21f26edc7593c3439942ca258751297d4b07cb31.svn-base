@@ -1,0 +1,6 @@
+# cdm-core
+
+<a href="http://www.sanen.online"><img src="http://download.sanen.online/assets/img/logo.png"/></a>
+
+The implementation of the cdm-api interface and the incomplete implementation of the congestion mode (DDD) further simplify the development process.
+

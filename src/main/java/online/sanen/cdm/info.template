@@ -1,0 +1,4 @@
+	Common DataSource Manager v2.8.01   
+	HOST	http://www.sanen.online       
+	DB	${dataBase}
+	URL	${url}    

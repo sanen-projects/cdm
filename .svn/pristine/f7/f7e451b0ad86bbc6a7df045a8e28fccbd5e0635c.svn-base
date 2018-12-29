@@ -1,0 +1,25 @@
+package online.sanen.cdm;
+
+import online.sanen.cdm.basic.Driven;
+import online.sanen.cdm.basic.Sorts;
+import online.sanen.cdm.condition.C;
+import online.sanen.cdm.factory.BootStrapFactoty;
+
+public class Mysql {
+
+	public static void main(String[] args) throws Exception {
+
+		BootStrapFactoty.load("sys", obstract -> {
+			obstract.setDriver(Driven.MYSQL);
+			obstract.setUrl("jdbc:mysql://122.14.215.129:3306/test?useSSL=false");
+			obstract.setUsername("zs");
+			obstract.setPassword("123456");
+			obstract.setFormat(true);
+		});
+
+		Behavior.specify(Topic.class).setFelds("name").sort(Sorts.DESC, "id").addCondition(C.eq("id", 80)).limit(0, 1)
+				.list();
+
+	}
+
+}

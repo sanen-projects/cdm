@@ -1,0 +1,33 @@
+##作为cdm-spring的约定
+controller 的RequestMapping注解的value值，即是该模块视图所在的文件夹。
+
+在spring-mvc.xml中加上
+
+	<bean class="online.sanen.cdm.springSupport.MappingModule" />
+	
+之前跳转对应 **模块** 视图要这样写
+
+	@RequestMapping("about")
+	@Controller
+	public class AboutController {
+	
+	@RequestMapping("/")
+	public String index() {
+		return "about/about";
+		}
+	}
+}
+	
+	
+现在只需要:
+
+	@RequestMapping("/")
+	public String index() {
+		return "about";
+		}
+	}
+
+	
+
+
+

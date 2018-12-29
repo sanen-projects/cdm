@@ -1,0 +1,29 @@
+package online.sanen.cdm;
+
+
+import online.sanen.cdm.basic.Driven;
+import online.sanen.cdm.basic.Obstract.DataSouseType;
+import online.sanen.cdm.factory.BootStrapFactoty;
+
+public class SqlLite {
+
+	public static void main(String[] args) {
+
+		try {
+			Bootstrap bootstrap = BootStrapFactoty.load(obstract -> {
+				obstract.setDataSouseType(DataSouseType.Druid);
+				obstract.setDriver(Driven.SQLITE);
+				obstract.setUrl(
+						"jdbc:sqlite:tmp/data/123.dat");
+
+			});
+
+			bootstrap.dataInformation().getTableNames().forEach(System.out::println);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+}
