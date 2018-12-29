@@ -49,25 +49,6 @@ public class SqlLite {
 			obstract.setUrl("jdbc:sqlite:test.sqlite");
 		});
 		
-		User user = new User();
-		user.name = "zhangsan";
-		
-		user.createTable();
-				
-		int id = user.insert();
-		
-		List<User> list = Behavior.specify(User.class).list();
-		System.out.println(list);
-		
-		user = new User(id).findByPk().get();
-		user.name = "Li si";
-		user.update();
-		
-		Condition condition = C.buid("name").eq("Li si");
-		list = Behavior.specify(User.class).addCondition(condition).limit(0,10).list();
-		System.out.println(list);
-		
-		user.delete();
 	}
 
 }
