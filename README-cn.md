@@ -65,7 +65,7 @@ public class SqlLite {
 支持常用数据库 *Mysql*,*Sqlite*,*Oracle*,*SqlServer*,更改Driven，url即可
 
 
-# 💚 与Mybatis比较
+#  与Mybatis比较
 * 与Mybatis相比，无配置文件，少数需要配置的参数通过注解加以实现
 * 小巧，使用简单，只需看看示例你就能够学会使用
 * 大部分情况下通过组合函数来替代sql（支持复杂条件查询，limit,排序等），数据库移植性好
@@ -73,7 +73,7 @@ public class SqlLite {
 
 
 
-# 💚 与Hibernate比较
+#  与Hibernate比较
 * 不会因为配置复杂带来众多bug
 * 支持批量修改，删除
 * 内置缓存让执行效率更高
@@ -83,11 +83,11 @@ public class SqlLite {
 
 
 
-# 💛 文档
+#  文档
 
 [Please refer to the Wiki for continuous updates](https://github.com/sanen-projects/cdm-core/wiki)
 
-#  💜 安装
+#  安装
 
 导入<a href="https://mvnrepository.com/artifact/online.sanen/cdm-core">maven依赖</a>
 
@@ -112,13 +112,13 @@ public class SqlLite {
 
 
 
-# 💠 下载
+# 下载
 
 
 
 [![Maven cdm-api](https://img.shields.io/badge/Maven-cdm--api-ff69b4.svg)](http://repo1.maven.org/maven2/online/sanen/cdm-api/) [![Maven cdm-core](https://img.shields.io/badge/Maven-cdm--core-ff69b4.svg)](http://repo1.maven.org/maven2/online/sanen/cdm-core/)  [![Maven mhdt-common](https://img.shields.io/badge/Maven-mhdt--common-ff69b4.svg)](http://repo1.maven.org/maven2/online/sanen/mhdt-common/)
 
-# 💎 接口
+#  接口
 
 ## BasicBean.java
  实体类须实现的基础接口，实现后就可以通过bootstrap调用,例如:
