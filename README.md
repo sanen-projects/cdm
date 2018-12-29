@@ -12,9 +12,13 @@ English | [简体中文](./README-cn.md)
 A simple to use, zero configuration, high fault rate, the efficiency of the Java ™ ORM database framework
 
 ### ✨ Features
-* **Easy**  Without relying on any third party, one line of code can initialize the database connection. To call the interface, you only need to remember one Bootstrap, one BootstrapFactory and two interfaces (BasicBean, Behavior<T>).
+
+* **Easy**  Without relying on any third party, one line of code can initialize the database connection. To call the interface, you only need to remember one Bootstrap, one [BootstrapFactory](#bootstrapFactory) and two interfaces ([BasicBean](#basicBeanjava), [Behavior<T>](#behaviorjava))
+	
 * **Zero configuration** Design principles follow conventions rather than conventions. If necessary, use annotations instead of XML,JSON and other configuration files
+	
 * **High fault tolerance rate** Non-fatal error automatically takes the default option instead
+
 * **Efficiency** Save time and while SQL writing is supported, most of the time it is not necessary
 
 
