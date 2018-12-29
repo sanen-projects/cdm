@@ -9,15 +9,15 @@
 
 English | [简体中文](./README-cn.md)
 
-A simple to use, zero configuration, high fault rate, the efficiency of the Java ™ ORM database framework
+A simple to use, zero configuration, high rate of fault tolerance, the efficiency of the Java ™ ORM database framework
 
 ### ✨ Features
 
 * **Easy**  Without relying on any third party, one line of code can initialize the database connection. To call the interface, you only need to remember one Bootstrap, one [BootstrapFactory](#bootstrapFactory) and two interfaces ([BasicBean](#basicBeanjava), [Behavior<T>](#behaviorjava))
 	
-* **Zero configuration** Design principles follow conventions rather than conventions. If necessary, use annotations instead of XML,JSON and other configuration files
+* **Zero configuration** If configuration parameters are required, use annotations instead of configuration files
 	
-* **High fault tolerance rate** Non-fatal error automatically takes the default option instead
+* **High fault tolerance rate** A non-fatal error automatically executes the default scheme
 
 * **Efficiency** Save time and while SQL writing is supported, most of the time it is not necessary
 
@@ -70,7 +70,7 @@ Support common database *Mysql*,*Sqlite*,*Oracle*,*SqlServer*
 
 # Compare with Mybatis
 * In contrast to Mybatis, there is no configuration file and a few parameters that need to be configured are implemented by annotations
-* Small, easy to use, just look at the examples you can learn to use
+* Small, easy to use, learn to use only need to see examples
 * In most cases, combining functions to replace SQL (support complex conditional queries, limit, sort, etc.) is good for database portability
 
 
@@ -79,7 +79,7 @@ Support common database *Mysql*,*Sqlite*,*Oracle*,*SqlServer*
 # Compare with Hibernate
 * It won't introduce many bugs due to complicated configuration
 * Support batch modification and deletion
-* Built-in caching makes execution more efficient
+* Built-in caching makes execution faster
 * Although it is an orm framework, SQL is still recommended to solve complex problems. Compared with SQL, a one-to-many relationship similar to Hibernate will make the problem more complex and difficult to maintain
 
 
