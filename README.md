@@ -171,8 +171,10 @@ class User implements BasicBean{
 		
 		//Conditions of the query
 		Condition condition = C.buid("name").eq("zhang san"); 	
-	// Create conditions
-		bootstrap.query("user").addEntry(User.class).addCondition(condition).sort(Sorts.DESC, "id").limit(0,10).list();
+		// Create conditions
+		bootstrap.query("user").addEntry(User.class)
+			.addCondition(condition).sort(Sorts.DESC, "id")
+			.limit(0,10).list();
 		
 ```	
 
