@@ -69,10 +69,10 @@
 
 [Please refer to the Wiki for continuous updates](https://github.com/sanen-projects/cdm-core/wiki)
 
-# 疑问
+# FAQ
 
-#### 使用过程有疑惑？发现bug？改进建议？（例如：不支持我在使用的数据库）
-请提交 [ISSUES](https://github.com/sanen-projects/cdm-core/issues)或邮件282854237@qq.com,将在24小时内作出回应
+#### 使用过程中有任何问题或改进建议？
+请提交 [ISSUES](https://github.com/sanen-projects/cdm-core/issues)或邮件282854237@qq.com,会在24小时内作出回应
 
 # BootstrapFactory
 
