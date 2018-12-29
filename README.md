@@ -93,9 +93,9 @@ Import <a href="https://mvnrepository.com/artifact/online.sanen/cdm-core">Maven 
 ```xml
 	
 <dependency>
-	<groupId>online.sanen</groupId>
-	<artifactId>cdm-core</artifactId>
-	<version>2.0.5</version>
+ <groupId>online.sanen</groupId>
+ <artifactId>cdm-core</artifactId>
+ <version>2.0.5</version>
 </dependency>
 	
 ```
