@@ -1,158 +1,250 @@
+
 <p align="center">
  <a  href="http://www.sanen.online"><img height="100px" src="http://download.sanen.online/assets/img/logo.png"/></a>
 </p>
 
 <h1 align="center">Cdm Framework</h1>
 
-
-English | [简体中文](./README-cn.md)
-
-
-An easy to use, zero configuration, high fault tolerance rate, the pursuit of the efficiency of the Java ™ ORM database framework
+[![Maven central](https://img.shields.io/badge/maven%20central-2.0.5-brightgreen.svg)](https://search.maven.org/artifact/online.sanen/cdm-core/2.0.5/jar) [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 
-[![Maven central](https://img.shields.io/badge/maven%20central-2.0.5-brightgreen.svg)](https://search.maven.org/artifact/online.sanen/cdm-core/2.0.5/jar)
-[![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
+
+A simple to use, zero configuration, high fault rate, the efficiency of the Java ™ ORM database framework
 
 ### ✨ Features
-* **Easy.** Without dependencies, and calling the interface is as straightforward as using a scripting language
-* **Zero configuration.** Convention is greater than configuration, using annotations instead of XML and JSON configuration
-* **High rate of fault tolerance.** In most cases, if the error is not fatal, take the default handling without throwing an exception
-* **Efficiency.** Solve 90% of the repetitive SQL work in your project because you don't need to write SQL
+* **Easy**  Without relying on any third party, one line of code can initialize the database connection. To call the interface, you only need to remember one Bootstrap, one BootstrapFactory and two interfaces (BasicBean, Behavior<T>).
+* **Zero configuration** Design principles follow conventions rather than conventions. If necessary, use annotations instead of XML,JSON and other configuration files
+* **High fault tolerance rate** Non-fatal error automatically takes the default option instead
+* **Efficiency** Save time and while SQL writing is supported, most of the time it is not necessary
 
 
 ```java
-Bootstrap bootstrap = BootStrapFactoty.load("default",config->{
-	config.setDriver(Driven.SQLITE);
-	config.setUrl("jdbc:sqlite:test.sqlite");
-});
 
-class User implements BasicBean{
+public class SqlLite {
+	
+	@Table("user") // Set table name (by default table name class name)
+	@BootStrapID("defaultBootstrap")	// Identifies the bootstrap id
+	public static class User implements BasicBean{
+		
+		@NoInsert
+		int id;
+		
+		String name;
+		
+		@Override
+		public String toString() {
+			return "User [id=" + id + ", name=" + name + "]";
+		}
 
-	int id;
-	String name;
-
-	@Override
-	public String primarykey() {
-		return "id";
+		@Override
+		public String primarykey() {
+			return "id";
+		}
 	}
+
+	public static void main(String[] args) {
+
+		Bootstrap bootstrap = BootstrapFactoty.load("defaultBootstrap",obstract -> {
+			obstract.setDriver(Driven.SQLITE);
+			obstract.setUrl("jdbc:sqlite:test.sqlite");
+		});
+		
+				
+		bootstrap.query(user).create();	//create table
+		bootstrap.query(user).insert(); // insert entity
+		user = bootstrap.query(User.class,1).find(); // find by pk(id)
+		System.out.println("The user where id=1 ? === 	"+user+"	==="); 
+		bootstrap.query(User.class, 1).delete();	// delete by pk(id)
+	}
+
 }
 
-bootstrap.query(new User()).create();
 ```
 
 
-Support for common databases: Mysql,Sqlite,Oracle,Sqlserver
+Support common database *Mysql*,*Sqlite*,*Oracle*,*SqlServer*
+
+#  Compared with Mybatis
+* In contrast to Mybatis, there is no configuration file and a few parameters that need to be configured are implemented by annotations
+* Small, easy to use, just look at the examples you can learn to use
+* In most cases, combining functions to replace SQL (support complex conditional queries, limit, sort, etc.) is good for database portability
 
 
 
-# 🆚 Compare with Mybatis
-* Compared with Mybatis, the zero configuration file
-* Easy to use, small, you can learn to use just look at the examples
-* In most cases, the combination of functions to replace SQL, database portability is good
-* Annotations replace XML tag configuration
-* Default to object name, field mapping does not require additional Settings
 
-
-# 🆚 Compare with Hibernate
+#  Compared with Hibernate
 * It won't introduce many bugs due to complicated configuration
 * Support batch modification and deletion
-* More efficient execution
-* Hibernate's one-to-many relationships make problems more complex and difficult to maintain than SQL
+* Built-in caching makes execution more efficient
+* Although it is an orm framework, SQL is still recommended to solve complex problems. Compared with SQL, a one-to-many relationship similar to Hibernate will make the problem more complex and difficult to maintain
 
 
 
 
-
-# ⭐ Document
+#  Document
 
 [Please refer to the Wiki for continuous updates](https://github.com/sanen-projects/cdm-core/wiki)
 
-# ⛅ Download
-[![Maven cdm-api](https://img.shields.io/badge/Maven-cdm--api-ff69b4.svg)](http://repo1.maven.org/maven2/online/sanen/cdm-api/)
-[![Maven cdm-core](https://img.shields.io/badge/Maven-cdm--core-ff69b4.svg)](http://repo1.maven.org/maven2/online/sanen/cdm-core/)
-[![Maven mhdt-common](https://img.shields.io/badge/Maven-mhdt--common-ff69b4.svg)](http://repo1.maven.org/maven2/online/sanen/mhdt-common/)
+#  Installation
 
+Import <a href="https://mvnrepository.com/artifact/online.sanen/cdm-core">maven依赖</a>
 
-# 🍭 The sample
-
-### 1.Import dependencies in the pom，<a href="https://mvnrepository.com/artifact/online.sanen/cdm-core">Maven address</a>
-
+### Maven
 ```xml
-<!-- https://mvnrepository.com/artifact/online.sanen/cdm-core -->
-<dependency>
-    <groupId>online.sanen</groupId>
-    <artifactId>cdm-core</artifactId>
-    <!-- Try to keep it up to date -->
-    <version>2.0.5</version>
-</dependency>
-```
 	
-### 2.Create entity classes
+	<dependency>
+		<groupId>online.sanen</groupId>
+		<artifactId>cdm-core</artifactId>
+		<version>2.0.5</version>
+	</dependency>
+	
+```
+
+### Gradle
+
+```js
+	
+	compile group: 'online.sanen', name: 'cdm-core', version: '2.0.5'
+	
+```
+
+
+
+# Download
+
+
+
+[![Maven cdm-api](https://img.shields.io/badge/Maven-cdm--api-ff69b4.svg)](http://repo1.maven.org/maven2/online/sanen/cdm-api/) [![Maven cdm-core](https://img.shields.io/badge/Maven-cdm--core-ff69b4.svg)](http://repo1.maven.org/maven2/online/sanen/cdm-core/)  [![Maven mhdt-common](https://img.shields.io/badge/Maven-mhdt--common-ff69b4.svg)](http://repo1.maven.org/maven2/online/sanen/mhdt-common/)
+
+#  Interface
+
+## BasicBean.java
+ The basic interface that the entity class must implement can be called through bootstrap. For example:
+
+> bootstrap.query(User.class)
+> bootstrap.query("user").addEntry(User.class)
+
+
+	
+ **The sample**
+
+1. The entity class implements the **BasicBean** interface
 
 ```java
-class User implements BasicBean {
-	int id;
 
+class User implements BasicBean{
+	int id;
+		 
 	String name;
+
 	@Override
 	public String primarykey() {
 		return "id";
 	}
+		 
 }
 ```
-
 	 
-### 3.Create the **BootStrap** instance
-
+2. Create an instance of **BootStrap** using **BootStrapFactoty**
 ```java
-Bootstrap bootstrap = BootStrapFactoty.load( obstract -> {
-	obstract.setDriver(Driven.MYSQL);
-	obstract.setUrl("jdbc:mysql://127.0.0.1:3306/test?useSSL=false");
-	obstract.setUsername("root");
-	obstract.setPassword("root");
-	obstract.setFormat(true);
-});
-```		
-		
-### 4.**CRUD** Operations
 
-#### Add
-
-```java
-bootstrap.query(user).insert();
-```	
-#### Delete
-
-```java
-bootstrap.query(user).delete();
-```	
-#### Update
-
-```java
-bootstrap.query(user).update();
-```	
-#### Find by pk
-
-```java
-bootstrap.query(User.class,2).find();
-```	
-#### List query
-
-```java
-bootstrap.query(User.class).addEntity(User.class).list();
-```	
-
-#### Add Condition
-
-```java
-bootstrap.query(User.class)
-	.addEntity(User.class)
-	.addContion(C.eq("name","tom"))
-	.list();
+	//url & username & password modify according to your current environment
+	Bootstrap bootstrap = BootStrapFactoty.load( obstract -> {
+		obstract.setDriver(Driven.MYSQL);
+		obstract.setUrl("jdbc:mysql://127.0.0.1:3306/test?useSSL=false");
+		obstract.setUsername("root");
+		obstract.setPassword("root");
+		obstract.setFormat(true);
+	});
 ```
-	
+		
+ 3. **CRUD** operations
+```java
 
+		bootstrap.query(user).insert();
+		bootstrap.query(user).delete();
+		bootstrap.query(user).update();
+		
+		//Primary key/list query
+		bootstrap.query(User.class,2).find();
+		bootstrap.query(User.class).addEntry(User.class).list();
+		
+		//Conditions of the query
+		Condition condition = C.buid("name").eq("zhang san"); 	
+	// Create conditions
+		bootstrap.query("user").addEntry(User.class).addCondition(condition).sort(Sorts.DESC, "id").limit(0,10).list();
+		
+```	
+
+## Behavior.java
+
+ Hyperemia mode (DDD), the entity class implementation itself can have CRUD behavior
+
+ **The sample**：
+
+1. The entity class implements the **Behavior** interface
+	
+```java
+
+	@Table("user") // Set the table name to the class name by default
+	@BootStrapID("defaultBootstrap")	// Identifies the bootstrap id
+	public static class User implements Behavior<User>{
+		
+		@NoInsert
+		int id;
+		String name;
+		
+		@Override
+		public String toString() {
+			return "User [id=" + id + ", name=" + name + "]";
+		}
+
+		@Override
+		public String primarykey() {
+			return "id";
+		}
+	}
+```
+
+	2. Create an instance of **BootStrap** using **BootStrapFactoty**
+```java
+
+	//url & username & password modify according to your current environment
+	Bootstrap bootstrap = BootStrapFactoty.load( obstract -> {
+		obstract.setDriver(Driven.MYSQL);
+		obstract.setUrl("jdbc:mysql://127.0.0.1:3306/test?useSSL=false");
+		obstract.setUsername("root");
+		obstract.setPassword("root");
+		obstract.setFormat(true);
+	});
+	
+```
+
+3. CRUD operations
+
+```java
+
+		User user = new User();
+		user.name = "zhangsan";
+		user.createTable();
+						
+		int id = user.insert();
+				
+		List<User> list = Behavior.specify(User.class).list();
+		System.out.println(list);
+				
+		user = new User(id).findByPk().get();
+		user.name = "Li si";
+		user.update();
+				
+		Condition condition = C.buid("name").eq("Li si");
+		list = Behavior.specify(User.class).addCondition(condition).limit(0,10).list();
+		System.out.println(list);
+				
+		user.delete();
+
+```
+🌙  Can go to[Github cdm-core](https://github.com/sanen-projects/cdm-core) submit questions/Suggestions [ISSUES](https://github.com/sanen-projects/cdm-core/issues)
 
 
 
