@@ -21,51 +21,6 @@ A simple to use, zero configuration, high rate of fault tolerance, the efficienc
 
 * **Efficiency** Save time and while SQL writing is supported, most of the time it is not necessary
 
-
-```java
-
-public class SqlLite {
-	
-	@Table("user") 
-	@BootStrapID("defaultBootstrap")	
-	public static class User implements BasicBean{
-		
-		@NoInsert
-		int id;
-		
-		String name;
-		
-		@Override
-		public String toString() {
-			return "User [id=" + id + ", name=" + name + "]";
-		}
-
-		@Override
-		public String primarykey() {
-			return "id";
-		}
-	}
-
-	public static void main(String[] args) {
-
-		Bootstrap bootstrap = BootstrapFactoty.load("defaultBootstrap",obstract -> {
-			obstract.setDriver(Driven.SQLITE);
-			obstract.setUrl("jdbc:sqlite:test.sqlite");
-		});
-		
-				
-		bootstrap.query(user).create();	
-		bootstrap.query(user).insert(); 
-		user = bootstrap.query(User.class,1).find(); 
-		System.out.println("The user where id=1 ? === 	"+user+"	==="); 
-		bootstrap.query(User.class, 1).delete();
-	}
-
-}
-
-```
-
-
 Support common database *Mysql*,*Sqlite*,*Oracle*,*SqlServer*
 
 # Compare with Mybatis
