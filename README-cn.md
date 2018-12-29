@@ -44,11 +44,11 @@
 ### Maven
 ```xml
 	
-	<dependency>
-		<groupId>online.sanen</groupId>
-		<artifactId>cdm-core</artifactId>
-		<version>2.0.5</version>
-	</dependency>
+<dependency>
+	<groupId>online.sanen</groupId>
+	<artifactId>cdm-core</artifactId>
+	<version>2.0.5</version>
+</dependency>
 	
 ```
 
@@ -56,7 +56,7 @@
 
 ```js
 	
-	compile group: 'online.sanen', name: 'cdm-core', version: '2.0.5'
+compile group: 'online.sanen', name: 'cdm-core', version: '2.0.5'
 	
 ```
 
@@ -74,8 +74,8 @@
 #### cdm支持Java版本？
 目前是用jdk8编译，如有需要可联系我降低jdk版本
 
-#### 使用过程中有任何问题或改进建议？
-请提交 [ISSUES](https://github.com/sanen-projects/cdm-core/issues)或邮件282854237@qq.com,会在24小时内作出回应
+#### 使用过程中有疑问或改进建议？
+请提交 [Issue](https://github.com/sanen-projects/cdm-core/issues)或直接邮件 282854237@qq.com,将会在24小时内作出答复
 
 # BootstrapFactory
 
