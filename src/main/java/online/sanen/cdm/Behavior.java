@@ -25,7 +25,7 @@ import online.sanen.cdm.condition.C;
 import online.sanen.cdm.condition.CompositeCondition;
 import online.sanen.cdm.condition.Condition;
 import online.sanen.cdm.condition.SimpleCondition;
-import online.sanen.cdm.factory.BootStrapFactoty;
+import online.sanen.cdm.factory.BootstrapFactoty;
 
 /**
  * <p>
@@ -177,14 +177,14 @@ public interface Behavior<T> extends BasicBean {
 
 		String bootstrapId = Reflect.getBootStrapId(this.getClass());
 
-		if (Validate.isNullOrEmpty(bootstrapId) && BootStrapFactoty.isUniqueness())
-			return BootStrapFactoty.getFirst();
+		if (Validate.isNullOrEmpty(bootstrapId) && BootstrapFactoty.isUniqueness())
+			return BootstrapFactoty.getFirst();
 
 		Assert.notNull(bootstrapId, "class:" + this.getClass().getName()
 				+ " There is no injected bootstrap instance, please use the @BootStrapID annotation.");
 
-		if (BootStrapFactoty.contains(bootstrapId))
-			return BootStrapFactoty.get(bootstrapId);
+		if (BootstrapFactoty.contains(bootstrapId))
+			return BootstrapFactoty.get(bootstrapId);
 		else
 			throw new NullPointerException("BootstrapId: '" + bootstrapId
 					+ "' index instance cannot be passed by class:" + this.getClass().getName());
@@ -311,8 +311,8 @@ public interface Behavior<T> extends BasicBean {
 
 		String bootStrapId = Reflect.getBootStrapId(cls);
 
-		return Validate.isNullOrEmpty(bootStrapId) && BootStrapFactoty.isUniqueness() ? BootStrapFactoty.getFirst()
-				: BootStrapFactoty.get(Reflect.getBootStrapId(cls));
+		return Validate.isNullOrEmpty(bootStrapId) && BootstrapFactoty.isUniqueness() ? BootstrapFactoty.getFirst()
+				: BootstrapFactoty.get(Reflect.getBootStrapId(cls));
 	}
 
 	/**

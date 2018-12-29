@@ -1,0 +1,27 @@
+java.lang.IllegalAccessException: Class com.mhdt.toolkit.Reflect can not access a member of class online.sanen.cdm.SqlLite$1User with modifiers ""
+	at sun.reflect.Reflection.ensureMemberAccess(Reflection.java:102)
+	at java.lang.Class.newInstance(Class.java:436)
+	at com.mhdt.toolkit.Reflect.newInstance(Reflect.java:233)
+	at online.sanen.cdm.basic.Structure.getEntry(Structure.java:132)
+	at online.sanen.cdm.basic.Structure.getPrimaryKey(Structure.java:251)
+	at online.sanen.cdm.handel.PrimaryKeyAsConditionHandel.handel(PrimaryKeyAsConditionHandel.java:20)
+	at online.sanen.cdm.Assembler.create(Assembler.java:39)
+	at online.sanen.cdm.QueryPKDevice.find(QueryPKDevice.java:28)
+	at online.sanen.cdm.SqlLite.main(SqlLite.java:37)
+java.lang.IllegalAccessException: Class com.mhdt.toolkit.Reflect can not access a member of class online.sanen.cdm.SqlLite$1User with modifiers ""
+	at sun.reflect.Reflection.ensureMemberAccess(Reflection.java:102)
+	at java.lang.Class.newInstance(Class.java:436)
+	at com.mhdt.toolkit.Reflect.newInstance(Reflect.java:233)
+	at online.sanen.cdm.basic.Structure.getEntry(Structure.java:132)
+	at online.sanen.cdm.basic.Structure.getPrimaryKey(Structure.java:251)
+	at online.sanen.cdm.handel.PrimaryKeyAsConditionHandel.handel(PrimaryKeyAsConditionHandel.java:20)
+	at online.sanen.cdm.Assembler.create(Assembler.java:39)
+	at online.sanen.cdm.QueryPKDevice.delete(QueryPKDevice.java:46)
+	at online.sanen.cdm.SqlLite.main(SqlLite.java:38)
+
+-----------------------------------------------------------------------------------
+
+Exception in thread "main" 
+java.util.NoSuchElementException: No value present
+	at java.util.Optional.get(Optional.java:135)
+	at online.sanen.cdm.SqlLite.main(SqlLite.java:62)

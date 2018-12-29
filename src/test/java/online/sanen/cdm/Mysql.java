@@ -3,13 +3,13 @@ package online.sanen.cdm;
 import online.sanen.cdm.basic.Driven;
 import online.sanen.cdm.basic.Sorts;
 import online.sanen.cdm.condition.C;
-import online.sanen.cdm.factory.BootStrapFactoty;
+import online.sanen.cdm.factory.BootstrapFactoty;
 
 public class Mysql {
 
 	public static void main(String[] args) throws Exception {
 
-		BootStrapFactoty.load("sys", obstract -> {
+		BootstrapFactoty.load("sys", obstract -> {
 			obstract.setDriver(Driven.MYSQL);
 			obstract.setUrl("jdbc:mysql://122.14.215.129:3306/test?useSSL=false");
 			obstract.setUsername("zs");

@@ -22,7 +22,7 @@ import online.sanen.cdm.template.transaction.Transaction;
  *         Date: 2018/06/12 <br>
  *         Time: 09:17
  */
-public class BootStrapFactoty {
+public class BootstrapFactoty {
 
 	static Map<Object, Bootstrap> cache = new HashMap<>();
 

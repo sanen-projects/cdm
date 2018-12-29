@@ -2,7 +2,7 @@ package online.sanen.cdm;
 
 import online.sanen.cdm.basic.Driven;
 import online.sanen.cdm.basic.Obstract.DataSouseType;
-import online.sanen.cdm.factory.BootStrapFactoty;
+import online.sanen.cdm.factory.BootstrapFactoty;
 
 public class Oracle {
 
@@ -10,7 +10,7 @@ public class Oracle {
 
 		try {
 
-			Bootstrap bootstrap = BootStrapFactoty.load("123", obstract -> {
+			Bootstrap bootstrap = BootstrapFactoty.load("123", obstract -> {
 
 				obstract.setDataSouseType(DataSouseType.Dbcp);
 				obstract.setDriver(Driven.ORACLE);
