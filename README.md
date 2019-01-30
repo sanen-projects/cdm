@@ -19,7 +19,7 @@
 * **容错率高** 非致命错误，自动采取默认方案替代
 * **效率** 节省时间，虽然支持编写sql但大部分情况没有这样做的必要
 
-支持常用数据库 **Mysql**,**Sqlite**,**Oracle**,**SqlServer** (更改Driven，url即可)
+支持常用数据库 **Mysql**,**Sqlite**,**Oracle**,**SqlServer** 
 
 
 # 🆚  与Mybatis比较
