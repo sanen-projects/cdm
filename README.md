@@ -8,7 +8,7 @@
 [![Travis](https://api.travis-ci.org/sanen-projects/cdm-core.svg?branch=master)](https://travis-ci.org/sanen-projects/cdm-core) [![codecov](https://codecov.io/gh/sanen-projects/cdm-core/branch/master/graph/badge.svg)](https://codecov.io/gh/sanen-projects/cdm-core) [![Maven central](https://img.shields.io/badge/maven%20central-2.0.5-brightgreen.svg)](https://search.maven.org/artifact/online.sanen/cdm-core/2.0.5/jar) [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 
-
+简体中文 | [English](./README-en.md)
 
 一个使用简单，零配置，容错率高，效率的Java™ ORM 数据库框架
 
