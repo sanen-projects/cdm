@@ -45,7 +45,7 @@ Support common database *Mysql*,*Sqlite*,*Oracle*,*SqlServer*
 
 #  Document
 
-[Please refer to the Wiki for continuous updates](https://github.com/sanen-projects/cdm-core/wiki)
+[Please refer to the Wiki for continuous updates](https://github.com/sanen-projects/cdm/wiki)
 
 #  Installation
 
