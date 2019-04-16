@@ -13,7 +13,7 @@
 一个使用简单，零配置，容错率高，效率的Java™ ORM 数据库框架
 
 ### ✨ 特性
-* **使用简单**  没有第三方依赖，一行代码即可初始化数据库连接，调用接口只需要记住一个引导器（Bootstrap），工厂[BootstrapFactory](#bootstrapFactory),两个接口（[BasicBean](#basicbean)，[Behavior<T>](#behavior)）即可。
+* **使用简单**  没有第三方依赖，一行代码即可初始化数据库连接，调用接口只需要记住一个引导器（Bootstrap），工厂[Bootstraps](#bootstraps)，[Behavior<T>](#behavior)）即可。
 	
 * **零配置** 设计原则遵循习惯大于约定,如有配置必要,使用注解替代XML,JSON等配置文件
 * **容错率高** 非致命错误，自动采取默认方案替代
@@ -37,16 +37,19 @@
 
 # 使用
 
-导入<a href="https://mvnrepository.com/artifact/online.sanen/cdm-core">maven依赖</a>
+导入<a href="https://mvnrepository.com/artifact/online.sanen/cdm-all/2.2.0">maven依赖</a>
 
 ### Maven
 ```xml
 	
+<!-- https://mvnrepository.com/artifact/online.sanen/cdm-all -->
 <dependency>
-	<groupId>online.sanen</groupId>
-	<artifactId>cdm-core</artifactId>
-	<version>2.0.5</version>
+    <groupId>online.sanen</groupId>
+    <artifactId>cdm-all</artifactId>
+    <version>最新版本</version>
 </dependency>
+
+
 	
 ```
 
@@ -54,7 +57,7 @@
 
 ```js
 	
-compile group: 'online.sanen', name: 'cdm-core', version: '2.0.5'
+compile group: 'online.sanen', name: 'cdm-all', version: '2.2.0'
 	
 ```
 
@@ -87,50 +90,50 @@ compile group: 'online.sanen', name: 'cdm-core', version: '2.0.5'
 
 
 
-# BootstrapFactory
+# Bootstraps
 
 #### Mysql
 
 ```java
-Bootstrap bootstrap = BootstrapFactoty.load("sqlite", obstract -> {
-	obstract.setDriver(Driven.MYSQL);
-	obstract.setUrl("jdbc:mysql://127.0.0.1:3306/test?useSSL=false");
-	obstract.setUsername("root");
-	obstract.setPassword("root");
-	obstract.setFormat(true);
-});
+Bootstrap bootstrap = Bootstraps.load("sqlite", obstract -> {
+			obstract.setDriverOption(DriverOption.MYSQL);
+			obstract.setUrl("jdbc:mysql://127.0.0.1:3306/test?useSSL=false");
+			obstract.setUsername("root");
+			obstract.setPassword("root");
+			obstract.setFormat(true);
+		});
 ```
 
 #### Oracle
 
 ```java
-Bootstrap bootstrap = BootstrapFactoty.load("oracle", obstract -> {
+Bootstrap bootstrap = Bootstraps.load("oracle", obstract -> {
 
-	obstract.setDataSouseType(DataSouseType.Dbcp);
-	obstract.setDriver(Driven.ORACLE);
-	obstract.setUrl("jdbc:oracle:thin:@//127.0.0.1:1521/orcl");
-	obstract.setUsername("username");
-	obstract.setPassword("password");
-});
+			obstract.setDataSouseType(DataSouseType.Druid);
+			obstract.setDriverOption(DriverOption.ORACLE);
+			obstract.setUrl("jdbc:oracle:thin:@//127.0.0.1:1521/orcl");
+			obstract.setUsername("username");
+			obstract.setPassword("password");
+		});
 ```
 
 #### Sqlite
 
 ```java
-Bootstrap bootstrap = BootstrapFactoty.load("defaultBootstrap",obstract -> {
-	obstract.setDriver(Driven.SQLITE);
-	obstract.setUrl("jdbc:sqlite:test.sqlite");
-});
+Bootstrap bootstrap = Bootstraps.load("defaultBootstrap",obstract -> {
+			obstract.setDriverOption(DriverOption.SQLITE);
+			obstract.setUrl("jdbc:sqlite:test.sqlite");
+		});
 ```
 
 #### Sqlserver
 ```java
-Bootstrap bootstrap = BootstrapFactoty.load(obstract -> {
-	obstract.setDriver("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-	obstract.setUrl("jdbc:sqlserver://127.0.0.1:1433;DatabaseName=testDb");
-	obstract.setUsername("username");
-	obstract.setPassword("password");
-});
+Bootstrap bootstrap = Bootstraps.load(obstract -> {
+			obstract.setDriverOption(DriverOption.MS_2012);
+			obstract.setUrl("jdbc:sqlserver://127.0.0.1:1433;DatabaseName=testDb");
+			obstract.setUsername("username");
+			obstract.setPassword("password");
+		});
 ```
 
 # BasicBean
