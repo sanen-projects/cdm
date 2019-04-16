@@ -139,44 +139,30 @@ Bootstrap bootstrap = Bootstraps.load(obstract -> {
 # BasicBean
  实体类须实现的基础接口，实现后就可以通过bootstrap调用,例如:
 
-> bootstrap.query(User.class)
-> bootstrap.query("user").addEntry(User.class)
+> bootstrap.queryTable(User.class)
+> bootstrap.queryTable("user").addEntry(User.class)
 
 
 	
  **示例**
 
-1. 实体类实现 **BasicBean**  接口
+1. 实体类映射
 
 ```java
 
-class User implements BasicBean{
+class User{
+	
+	@Id
 	int id;
 		 
 	String name;
 
-	@Override
-	public String primarykey() {
-		return "id";
-	}
 		 
 }
 ```
 	 
-2. 使用 **BootStrapFactoty** 创建 **BootStrap** 实例
-```java
 
-	//url & username & password modify according to your current environment
-	Bootstrap bootstrap = BootStrapFactoty.load( obstract -> {
-		obstract.setDriver(Driven.MYSQL);
-		obstract.setUrl("jdbc:mysql://127.0.0.1:3306/test?useSSL=false");
-		obstract.setUsername("root");
-		obstract.setPassword("root");
-		obstract.setFormat(true);
-	});
-```
-		
- 3. **CRUD** 操作
+ 2. **CRUD** 操作
 ```java
 
 		bootstrap.query(user).insert();
@@ -184,12 +170,12 @@ class User implements BasicBean{
 		bootstrap.query(user).update();
 		
 		//主键/列表查询
-		bootstrap.query(User.class,2).find();
-		bootstrap.query(User.class).addEntry(User.class).list();
+		bootstrap.queryTable(User.class,2).find();
+		bootstrap.queryTable(User.class).addEntry(User.class).list();
 		
 		//条件查询
 		Condition condition = C.buid("name").eq("zhang san"); 	// 创建条件
-		bootstrap.query("user").addEntry(User.class).addCondition(condition).sort(Sorts.DESC, "id").limit(0,10).list();
+		bootstrap.queryTable("user").addEntry(User.class).addCondition(condition).sort(Sorts.DESC, "id").limit(0,10).list();
 		
 ```	
 
@@ -210,6 +196,7 @@ class User implements BasicBean{
 	public static class User implements Behavior<User>{
 		
 		@NoInsert
+		@Id
 		int id;
 		String name;
 		
@@ -217,29 +204,12 @@ class User implements BasicBean{
 		public String toString() {
 			return "User [id=" + id + ", name=" + name + "]";
 		}
-
-		@Override
-		public String primarykey() {
-			return "id";
-		}
 	}
 ```
 
-2. 使用 **BootStrapFactoty** 创建 **BootStrap** 实例
-```java
 
-	//url & username & password modify according to your current environment
-	Bootstrap bootstrap = BootStrapFactoty.load( obstract -> {
-		obstract.setDriver(Driven.MYSQL);
-		obstract.setUrl("jdbc:mysql://127.0.0.1:3306/test?useSSL=false");
-		obstract.setUsername("root");
-		obstract.setPassword("root");
-		obstract.setFormat(true);
-	});
-	
-```
 
-3. CRUD操作
+2. CRUD操作
 
 ```java
 
