@@ -37,11 +37,11 @@
 
 # 使用
 
-导入<a href="https://mvnrepository.com/artifact/online.sanen/cdm-all/2.2.0">maven依赖</a>
 
 ### Maven
 ```xml
 	
+<a href="https://mvnrepository.com/artifact/online.sanen/cdm-all">https://mvnrepository.com/artifact/online.sanen/cdm-all</a>
 <!-- https://mvnrepository.com/artifact/online.sanen/cdm-all -->
 <dependency>
     <groupId>online.sanen</groupId>
