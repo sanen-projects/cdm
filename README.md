@@ -39,9 +39,11 @@
 
 
 ### Maven
+
+<a href="https://mvnrepository.com/artifact/online.sanen/cdm-all">https://mvnrepository.com/artifact/online.sanen/cdm-all</a>
+
 ```xml
 	
-<a href="https://mvnrepository.com/artifact/online.sanen/cdm-all">https://mvnrepository.com/artifact/online.sanen/cdm-all</a>
 <!-- https://mvnrepository.com/artifact/online.sanen/cdm-all -->
 <dependency>
     <groupId>online.sanen</groupId>
