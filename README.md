@@ -1,7 +1,5 @@
 
-<p align="center">
 <img height="100px" src="https://img-blog.csdnimg.cn/20181229161612418">
-</p>
 
 <h1 align="center">Cdm Framework</h1>
 
