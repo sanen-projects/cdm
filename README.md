@@ -66,6 +66,7 @@ compile group: 'online.sanen', name: 'cdm-all', version: '2.2.0'
 # 文档
 
 [Wiki](https://github.com/sanen-projects/cdm-core/wiki)
+项目一直在生产环境中更新，但本人比较懒没有更新git的习惯，所以需要最新Javadoc可以联系我。
 [Javadoc](https://apidoc.gitee.com/sanen-projects/cdm)
 
 
